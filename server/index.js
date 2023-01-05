@@ -6,6 +6,8 @@ import dotenv from 'dotenv'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import generalRoutes from './routes/general.js'
+import {dataUser} from './data/index.js'
+import User from './models/User.js'
 
 /*CONFIGURATION*/
 dotenv.config()
@@ -30,4 +32,8 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true
 }).then(() => {
     app.listen(PORT, () => console.log(`Server port: ${PORT}`))
+ /* INSERT DATA BULK MODE 
+ User.insertMany(dataUser)*/
+
+
 }).catch(error => console.log(`${error} did not connect`))
