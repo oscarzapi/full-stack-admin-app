@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { LightModeOutlined, DarkModeOutlined, Menu as MenuIcon, Search, SettingsOutlined, ArrowDropDownOutlined } from '@mui/icons-material'
 import FlexBetween from './FlexBetween'
 import { useDispatch } from 'react-redux'
@@ -10,6 +10,11 @@ import { useTheme, AppBar, Toolbar, IconButton, InputBase, Button, Box, Typograp
 const Navbar = ({user, isSideBarOpen, setIsSideBarOpen}) => {
     const dispatch = useDispatch()
     const theme = useTheme()
+
+    const [anchorEl, setAnchorEl] = useState(null)
+    const isOpen = Boolean(anchorEl);
+    const handleClick = event => setAnchorEl(event.currentTarget)
+    const handleClose = () => setAnchorEl(null);
 
 
   return (
@@ -42,7 +47,7 @@ const Navbar = ({user, isSideBarOpen, setIsSideBarOpen}) => {
                 <SettingsOutlined sx={{fontSize:'25px'}}></SettingsOutlined>
             </IconButton>
             <FlexBetween>
-                <Button sx={{display:'flex',
+                <Button onClick={handleClick} sx={{display:'flex',
             justifyContent:'space-between',
             alignItems: 'center',
             textTransform: 'none',
@@ -76,6 +81,9 @@ const Navbar = ({user, isSideBarOpen, setIsSideBarOpen}) => {
             </Button>
             <Menu
               anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              anchorEl={anchorEl}
+              open={isOpen}
+              onClose={handleClose}
             >
 <MenuItem >Log Out</MenuItem>
             </Menu>

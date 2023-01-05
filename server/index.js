@@ -6,8 +6,11 @@ import dotenv from 'dotenv'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import generalRoutes from './routes/general.js'
-import {dataUser} from './data/index.js'
+import clientRoutes from './routes/client.js'
+import {dataUser, dataProduct} from './data/index.js'
 import User from './models/User.js'
+import Product from './models/Product.js'
+
 
 /*CONFIGURATION*/
 dotenv.config()
@@ -24,6 +27,7 @@ app.use(cors())
 
 /* ROUTES */
 app.use('/general', generalRoutes)
+app.use('/client', clientRoutes)
 
 /* MONGOOSE SET UP */
 const PORT = process.env.PORT || 9000
@@ -33,7 +37,8 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then(() => {
     app.listen(PORT, () => console.log(`Server port: ${PORT}`))
  /* INSERT DATA BULK MODE 
- User.insertMany(dataUser)*/
-
+ User.insertMany(dataUser)
+Product.insertMany(dataProduct)
+ */
 
 }).catch(error => console.log(`${error} did not connect`))
