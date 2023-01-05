@@ -7,10 +7,11 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import generalRoutes from './routes/general.js'
 import clientRoutes from './routes/client.js'
-import {dataUser, dataProduct} from './data/index.js'
+import {dataUser, dataProduct, dataProductStat, dataTransaction} from './data/index.js'
 import User from './models/User.js'
 import Product from './models/Product.js'
-
+import ProductStat from './models/ProductStat.js'
+import Transaction from './models/Transaction.js'
 
 /*CONFIGURATION*/
 dotenv.config()
@@ -39,6 +40,9 @@ mongoose.connect(process.env.MONGO_URL, {
  /* INSERT DATA BULK MODE 
  User.insertMany(dataUser)
 Product.insertMany(dataProduct)
+ProductStat.insertMany(dataProductStat)
+Transaction.insertMany(dataTransaction)
  */
+
 
 }).catch(error => console.log(`${error} did not connect`))
