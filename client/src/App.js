@@ -11,6 +11,8 @@ import Customers from 'scenes/customers'
 import Transactions from 'scenes/transactions'
 import Geography from 'scenes/geography'
 import Overview from 'scenes/overview';
+import Daily from 'scenes/daily';
+
 
 function App() {
   const mode = useSelector(state => state.global.mode)
@@ -30,6 +32,7 @@ function App() {
             <Route path='/transactions' element={<Transactions></Transactions>}></Route>
             <Route path='/geography' element={<Geography></Geography>}></Route>
             <Route path='/overview' element={<Overview></Overview>}></Route>
+            <Route path='/daily' element={<Daily></Daily>}></Route>
 
           </Route>
         </Routes>
