@@ -2,7 +2,7 @@ import React from 'react'
 
 const Predictions = () => {
   return (
-    <div>Predictions</div>
+    <div>Predictions for daily sales</div>
   )
 }
 

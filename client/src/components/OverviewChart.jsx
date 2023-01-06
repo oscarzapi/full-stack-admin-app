@@ -53,27 +53,27 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         axis: {
           domain: {
             line: {
-              stroke: theme.palette.secondary[200],
+              stroke: theme.palette.secondary[50],
             },
           },
           legend: {
             text: {
-              fill: theme.palette.secondary[200],
+              fill: theme.palette.secondary[50],
             },
           },
           ticks: {
             line: {
-              stroke: theme.palette.secondary[200],
+              stroke: theme.palette.secondary[50],
               strokeWidth: 1,
             },
             text: {
-              fill: theme.palette.secondary[200],
+              fill: theme.palette.secondary[50],
             },
           },
         },
         legends: {
           text: {
-            fill: theme.palette.secondary[200],
+            fill: theme.palette.secondary[50],
           },
         },
         tooltip: {
@@ -82,7 +82,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
           },
         },
       }}
-      margin={{ top: 20, right: 50, bottom: 50, left: 70 }}
+      margin={{ top: 20, right: 20, bottom: 30, left: 50 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -90,6 +90,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         max: "auto",
         stacked: false,
         reverse: false,
+
       }}
       yFormat=" >-.2f"
       curve="catmullRom"
@@ -104,7 +105,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         orient: "bottom",
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 0,
+        tickRotation: 90,
         legend: isDashboard ? "" : "Month",
         legendOffset: 36,
         legendPosition: "middle",
