@@ -8,6 +8,7 @@ import morgan from 'morgan'
 import generalRoutes from './routes/general.js'
 import clientRoutes from './routes/client.js'
 import salesRoutes from './routes/sales.js'
+import managementRoutes from './routes/management.js'
 
 import {dataUser,
      dataProduct,
@@ -37,6 +38,7 @@ app.use(cors())
 app.use('/general', generalRoutes)
 app.use('/client', clientRoutes)
 app.use('/sales', salesRoutes)
+app.use('/management', managementRoutes)
 
 /* MONGOOSE SET UP */
 const PORT = process.env.PORT || 9000

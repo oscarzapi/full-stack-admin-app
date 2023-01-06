@@ -100,7 +100,7 @@ const Sidebar = ({user,
               icon: <AdminPanelSettingsOutlined />,
             },
             {
-              text: "Performance",
+              text: "Predictions",
               icon: <TrendingUpOutlined />,
             },
           ];
