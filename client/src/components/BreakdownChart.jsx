@@ -8,7 +8,6 @@ import { useGetSalesQuery } from "state/api";
 const BreakdownChart = ({ isDashboard = false }) => {
   const { data, isLoading } = useGetSalesQuery();
   const theme = useTheme();
-  console.log(data)
 
   if (!data || isLoading) return "Loading...";
 

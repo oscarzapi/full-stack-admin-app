@@ -52,7 +52,7 @@ const Admin = () => {
 
   return (
     <Box
-        mt="40px"
+        m="1.5rem 1.5rem"
         height="75vh"
         sx={{
             "& .MuiDataGrid-root": {
