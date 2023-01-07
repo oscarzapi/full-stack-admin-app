@@ -38,8 +38,6 @@ for (let i = 0; i < splitted.length; i++) {
             }
             return color;
           }
-        
-        
 
         productsFilteredAux.map(product => {
             const data = []
