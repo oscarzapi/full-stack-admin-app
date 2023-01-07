@@ -23,9 +23,9 @@ for (let i = 0; i < splitted.length; i++) {
 
         const productsFilteredAux = await ProductStat.aggregate([
             { $match: {productId: {$in: searchSplitted}}},
-            /* { $unwind: '$dailyData'},
-            { $match: {'dailyData.date': {$eq: '2021-10-10'}}},
-            { $group: {_id: '$productId', list: {$push: '$dailyData.date'}}} */
+            { $unwind: '$dailyData'},
+            { $match: {'dailyData.date': {$gt: '2021-11-01'}}},
+            { $group: {_id: '$_id', list: { $push: { 'date': '$dailyData.date','totalSales': '$dailyData.totalSales' } }}} 
         ])
 
         const productsFiltered = []
@@ -39,18 +39,19 @@ for (let i = 0; i < splitted.length; i++) {
             return color;
           }
         
+        
+
         productsFilteredAux.map(product => {
             const data = []
-            product.dailyData.forEach(day => {
-                data.push({'x':new Date(day.date), 'y':day.totalSales})
+            product.list.forEach(object => {
+                data.push({'x':object.date, 'y':object.totalSales})
             })
-            productsFiltered.push({'id':product.productId, 'color':getRandomColor(), 'data':data})
+            productsFiltered.push({'id':product._id, 'color':getRandomColor(), 'data':data})
         })
          
         const results = {
             'listOfProducts':listOfProducts,
-         'productsFiltered': productsFiltered,
-        'search': searchSplitted}
+         'productsFiltered': productsFiltered}
         res.status(200).json(results)
     } catch (error) {
         res.status(404).json({message:error.message})
