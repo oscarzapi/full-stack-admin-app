@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import {Box, useMediaQuery} from '@mui/material'
 import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -26,7 +26,9 @@ const Layout = () => {
       isSideBarOpen={isSideBarOpen}
       setIsSideBarOpen={setIsSideBarOpen}
       ></Navbar>
+      <Suspense fallback={<h1>Loading...</h1>}>
       <Outlet></Outlet>
+      </Suspense>
       </Box>
     </Box>
   )

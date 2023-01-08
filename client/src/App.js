@@ -1,11 +1,25 @@
 import {CssBaseline, ThemeProvider} from '@mui/material'
 import { createTheme } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
-import { useMemo } from 'react';
+import { lazy, useMemo } from 'react';
 import { themeSettings } from 'theme';
 import { BrowserRouter, Routes , Route, Navigate} from 'react-router-dom';
-import Layout from 'scenes/layout'
-import Dashboard from 'scenes/dashboard'
+
+
+const Dashboard = lazy(() => import('scenes/dashboard'))
+const Layout = lazy(() => import('scenes/layout'))
+const Products = lazy(() => import('scenes/products'))
+const Customers = lazy(() => import('scenes/customers'))
+const Transactions = lazy(() => import('scenes/transactions'))
+const Geography = lazy(() => import('scenes/geography'))
+const Overview = lazy(() => import('scenes/overview'))
+const Daily = lazy(() => import('scenes/daily'))
+const Monthly = lazy(() => import('scenes/monthly'))
+const Breakdown = lazy(() => import('scenes/breakdown'))
+const Admin = lazy(() => import('scenes/admin'))
+const Predictions = lazy(() => import('scenes/predictions'))
+
+/* import Dashboard from 'scenes/dashboard'
 import Products from 'scenes/products'
 import Customers from 'scenes/customers'
 import Transactions from 'scenes/transactions'
@@ -15,7 +29,7 @@ import Daily from 'scenes/daily';
 import Monthly from 'scenes/monthly';
 import Breakdown from 'scenes/breakdown';
 import Admin from 'scenes/admin'
-import Predictions from 'scenes/predictions'
+import Predictions from 'scenes/predictions' */
 
 function App() {
   const mode = useSelector(state => state.global.mode)
