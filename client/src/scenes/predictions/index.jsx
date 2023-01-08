@@ -21,17 +21,18 @@ const Predictions = () => {
 
   }, [data]) 
 
-  const dataFiltered = useMemo(() => {
+  const predictionsFiltered = useMemo(() => {
     if(!data) return []
-    const { dataFiltered, predictionsFiltered} = data
-    console.log(predictionsFiltered)
-    return dataFiltered
+    const { 
+       predictionsFiltered
+      } = data
+    return predictionsFiltered
   },[data])
 
   return (
     <Box m='1.5rem 1.5rem'>
       <Header title='PREDICTIONS' subtitle='Search for the products you wish to obtain their forecasting sales'></Header>
-       {dataFiltered && !isLoading ? (
+       {predictionsFiltered && !isLoading ? (
         <Box height='75vh' m='0.5rem' >
           <Box><Autocomplete
       loading={isLoading || !data}
@@ -56,7 +57,7 @@ const Predictions = () => {
         )}
       /> </Box>
       <Box height='100vh' mb='1rem'>
-      <ResponsiveLine data={dataFiltered} 
+      <ResponsiveLine data={predictionsFiltered} 
       theme={{
         axis: {
           domain: {
@@ -90,7 +91,7 @@ const Predictions = () => {
           },
         },
       }}
-      //colors={{ datum: "color" }}
+      colors={{ datum: "color" }}
       margin={{ top: 50, right: 50, bottom: 70, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
