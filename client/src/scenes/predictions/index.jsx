@@ -21,16 +21,17 @@ const Predictions = () => {
 
   }, [data]) 
 
-  const productsFiltered = useMemo(() => {
+  const dataFiltered = useMemo(() => {
     if(!data) return []
-    const {productsFiltered} = data
-    return productsFiltered
+    const { dataFiltered, predictionsFiltered} = data
+    console.log(predictionsFiltered)
+    return dataFiltered
   },[data])
 
   return (
     <Box m='1.5rem 1.5rem'>
       <Header title='PREDICTIONS' subtitle='Search for the products you wish to obtain their forecasting sales'></Header>
-       {productsFiltered && !isLoading ? (
+       {dataFiltered && !isLoading ? (
         <Box height='75vh' m='0.5rem' >
           <Box><Autocomplete
       loading={isLoading || !data}
@@ -55,7 +56,7 @@ const Predictions = () => {
         )}
       /> </Box>
       <Box height='100vh' mb='1rem'>
-      <ResponsiveLine data={productsFiltered} 
+      <ResponsiveLine data={dataFiltered} 
       theme={{
         axis: {
           domain: {
