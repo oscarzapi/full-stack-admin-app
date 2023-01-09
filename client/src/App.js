@@ -5,7 +5,7 @@ import { lazy, useMemo } from 'react';
 import { themeSettings } from 'theme';
 import { BrowserRouter, Routes , Route, Navigate} from 'react-router-dom';
 
-
+const Login = lazy(() => import('scenes/login'))
 const Dashboard = lazy(() => import('scenes/dashboard'))
 const Layout = lazy(() => import('scenes/layout'))
 const Products = lazy(() => import('scenes/products'))
@@ -42,7 +42,8 @@ function App() {
         <CssBaseline></CssBaseline>
         <Routes>
           <Route element={<Layout></Layout>}>
-            <Route path='/' element={<Navigate to='/dashboard' replace></Navigate>}></Route>
+            <Route path='/' element={<Navigate to='/login' replace></Navigate>}></Route>
+            <Route path='/login' element={<Login></Login>}></Route>
             <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
             <Route path='/products' element={<Products></Products>}></Route>
             <Route path='/customers' element={<Customers></Customers>}></Route>

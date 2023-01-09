@@ -46,6 +46,7 @@ const Sidebar = ({user,
         useEffect(() => {
             setActive(pathname.substring(1))
         }, [pathname])
+        
         const navItems = [
             {
               text: "Dashboard",

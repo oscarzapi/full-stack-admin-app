@@ -6,10 +6,17 @@ import { setMode } from 'state'
 import profileImage from 'assets/profile.jpg'
 import { useTheme, AppBar, Toolbar, IconButton, InputBase, Button, Box, Typography, Menu,
     MenuItem} from '@mui/material'
+import { SignInButton } from './SignInButton'
+import { useIsAuthenticated } from "@azure/msal-react";
+import { SignOutButton } from './SignOutButton'
+
 
 const Navbar = ({user, isSideBarOpen, setIsSideBarOpen}) => {
     const dispatch = useDispatch()
     const theme = useTheme()
+    const isAuthenticated = useIsAuthenticated();
+
+
 
     const [anchorEl, setAnchorEl] = useState(null)
     const isOpen = Boolean(anchorEl);
@@ -85,8 +92,11 @@ const Navbar = ({user, isSideBarOpen, setIsSideBarOpen}) => {
               open={isOpen}
               onClose={handleClose}
             >
-<MenuItem >Log Out</MenuItem>
+<MenuItem >
+{ isAuthenticated ? <SignOutButton /> : <SignInButton /> }
+</MenuItem>
             </Menu>
+            {isAuthenticated ? <span>Signed in</span> : <SignInButton></SignInButton> }               
             </FlexBetween>
         </FlexBetween>
     </FlexBetween>
