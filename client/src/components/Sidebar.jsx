@@ -138,11 +138,10 @@ const Sidebar = ({user,
                 borderRadius="10%"
                 sx={{ objectFit: "cover" }}>
                 </Box>
-                {!isNonMobile && (
+                
                     <IconButton onClick={() => setIsSideBarOpen(!isSideBarOpen)}>
                         <ChevronLeft></ChevronLeft>
                     </IconButton>
-                )}
                     </FlexBetween>
                 </Box>
                 <List>

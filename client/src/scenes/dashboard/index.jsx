@@ -65,14 +65,14 @@ const Dashboard = () => {
       <Box display='flex' justifyContent='flex-end'>
           <Button
             sx={{
-              backgroundColor: theme.palette.secondary.light,
+              backgroundColor: theme.palette.background.alt,
               color: theme.palette.secondary[50],
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
             }}
           >
-            <DownloadOutlined sx={{ mr: "10px" }} />
+            <DownloadOutlined sx={{ mr: "10px", color: theme.palette.secondary[50] }} />
             Download Reports
           </Button>
         </Box>
