@@ -11,6 +11,7 @@ import Login from 'scenes/login'
 
 const Layout = () => {
   const userId = useSelector((state) => state.global.userId)
+  const userName = useSelector((state) => state.global.userName)
   const { data } = useGetUserQuery(userId);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false)
   const isNonMobile = useMediaQuery('(min-width:600px)')
@@ -19,10 +20,11 @@ const Layout = () => {
 
 
   return (
-    <Box display={isNonMobile ? 'flex': 'block'} width='100%' height='100%'>
+    <Box display={isNonMobile ? 'flex': 'block'} width='100%' height='100%' justifyContent='center' m='1.5rem' >
         {isAuthenticated ? (
         <Box>
-          <Sidebar user={data|| {}}
+          <Sidebar userData={data|| {}}
+          userName={userName}
       isSideBarOpen={isSideBarOpen}
       setIsSideBarOpen={setIsSideBarOpen}
       drawerWidth="250px"
@@ -30,14 +32,19 @@ const Layout = () => {
       ></Sidebar>
    
    <Box flexGrow={1}>
-      <Navbar user={data || {}}
+      <Navbar userName={userName} 
+      userData={data || {}}
       isSideBarOpen={isSideBarOpen}
       setIsSideBarOpen={setIsSideBarOpen}
       ></Navbar>
       <Suspense fallback={<h1>Loading...</h1>}>
       <Outlet></Outlet>
       </Suspense>
-      </Box></Box>): (<Box><Login></Login></Box>)}
+      </Box></Box>
+      ) : 
+      (
+        <Login></Login>
+        )}
         
       </Box>
   )

@@ -11,7 +11,7 @@ import { useIsAuthenticated } from "@azure/msal-react";
 import { SignOutButton } from './SignOutButton'
 
 
-const Navbar = ({user, isSideBarOpen, setIsSideBarOpen}) => {
+const Navbar = ({userData, userName, isSideBarOpen, setIsSideBarOpen}) => {
     const dispatch = useDispatch()
     const theme = useTheme()
     const isAuthenticated = useIsAuthenticated();
@@ -58,7 +58,8 @@ const Navbar = ({user, isSideBarOpen, setIsSideBarOpen}) => {
             justifyContent:'space-between',
             alignItems: 'center',
             textTransform: 'none',
-            gap:'1rem'
+            gap:'1rem',
+            color: theme.palette.secondary[50]
             }}>
                 <Box component="img"
                 alt="profile"
@@ -72,18 +73,18 @@ const Navbar = ({user, isSideBarOpen, setIsSideBarOpen}) => {
                 <Typography
                   fontWeight="bold"
                   fontSize="0.85rem"
-                  sx={{ color: theme.palette.mode === 'dark' ? '#F0F0F0': '#78A1BB' }}>
-                    {user.name}
+                  >
+                    {userName}
                   </Typography>
                   <Typography
                   fontSize="0.75rem"
-                  sx={{ color: theme.palette.mode === 'dark' ? '#EBF5EE': '#87A8B9' }}
+                  
                 >
-                  {user.occupation}
+                  {userData.occupation}
                 </Typography>
                 </Box>
                 <ArrowDropDownOutlined
-                sx={{ color: theme.palette.mode === 'dark' ? '#F0F0F0': '#78A1BB', fontSize: "25px" }}
+                sx={{  fontSize: "25px" }}
               />
             </Button>
             <Menu

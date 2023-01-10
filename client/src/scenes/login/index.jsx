@@ -1,18 +1,21 @@
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useIsAuthenticated } from '@azure/msal-react';
 import { Box, List, ListItem } from '@mui/material'
 import React, { Suspense } from 'react'
+import { useSelector } from 'react-redux';
 import SignIn from 'scenes/signin';
 import profileImage from '../../assets/nakheel.png'
 
 
 const Login = () => {
+
+
   const isAuthenticated = useIsAuthenticated();
+  const userName = useSelector((state) => state.global.userName)
 
   return (
       <Box >
        
         {isAuthenticated ? (
-          <Box display='flex' justifyContent='center' m='1.5rem'>
            <List>
            <ListItem>
            <Box   
@@ -27,10 +30,9 @@ const Login = () => {
      
            </ListItem>
            <ListItem>
-            <h2>Welcome back user!!</h2>
+            {<h2>Welcome back {userName}!!</h2>}
            </ListItem>
            </List>
-           </Box>
             
             
 

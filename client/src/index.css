@@ -8,4 +8,6 @@ body,
   height: 100%;
   width: 100%;
   font-family: 'Inter', sans-serif;
+  background:linear-gradient(rgba(51, 125, 155, 0.5),transparent)
 }
+

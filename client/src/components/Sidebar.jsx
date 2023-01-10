@@ -33,7 +33,7 @@ import {
   import { useLocation, useNavigate } from "react-router-dom";
 
 
-const Sidebar = ({user,
+const Sidebar = ({userData, userName,
     isSideBarOpen,
     setIsSideBarOpen,
     drawerWidth, isNonMobile}) => {
@@ -202,13 +202,13 @@ const Sidebar = ({user,
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  {user.name}
+                  {userName}
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  {user.occupation}
+                  {userData.occupation}
                 </Typography>
               </Box>
               <SettingsOutlined
