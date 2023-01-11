@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {MicrosoftLoginButton} from 'react-social-login-buttons';
-import { useIsAuthenticated, useMsal } from "@azure/msal-react";
+import {  useMsal } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
 import { Box, List, ListItem } from '@mui/material';
 import profileImage from '../../assets/nakheel.png'
